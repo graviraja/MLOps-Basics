@@ -1,3 +1,6 @@
+
+**Note: The purpose of the project to explore the libraries and learn how to use them. Not to build a SOTA model.**
+
 ## Requirements:
 
 This project uses Python 3.8
@@ -17,12 +20,20 @@ pip install -r requirements.txt
 
 ## Running
 
-### Running code
+### Training
 
 After installing the requirements, in order to train the model simply run:
 
 ```
 python train.py
+```
+
+### Inference
+
+After training, update the model checkpoint path in the code and run
+
+```
+python inference.py
 ```
 
 ### Running notebooks

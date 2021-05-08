@@ -25,7 +25,7 @@ class ColaModel(pl.LightningModule):
     def training_step(self, batch, batch_idx):
         logits = self.forward(batch["input_ids"], batch["attention_mask"])
         loss = F.cross_entropy(logits, batch["label"])
-        return {"loss": loss, "log": {"train_loss": loss}}
+        self.log("train_loss", loss, prog_bar=True)
 
     def validation_step(self, batch, batch_idx):
         logits = self.forward(batch["input_ids"], batch["attention_mask"])
@@ -33,13 +33,8 @@ class ColaModel(pl.LightningModule):
         _, preds = torch.max(logits, dim=1)
         val_acc = accuracy_score(preds.cpu(), batch["label"].cpu())
         val_acc = torch.tensor(val_acc)
-        return {"loss": loss, "acc": val_acc}
-
-    def validation_epoch_end(self, outputs):
-        avg_loss = torch.stack([x["loss"] for x in outputs]).mean()
-        avg_val_acc = torch.stack([x["acc"] for x in outputs]).mean()
-        out = {"val_loss": avg_loss, "val_acc": avg_val_acc}
-        return {**out, "log": out}
+        self.log("val_loss", loss, prog_bar=True)
+        self.log("val_acc", val_acc, prog_bar=True)
 
     def configure_optimizers(self):
         return torch.optim.Adam(self.parameters(), lr=self.hparams["lr"])
