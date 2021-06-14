@@ -76,5 +76,5 @@ Following tech stack is used:
 References
 
 - [Hydra Documentation](https://hydra.cc/docs/intro)
-- 
+
 - [Simone Tutorial on Hydra](https://www.sscardapane.it/tutorials/hydra-tutorial/#executing-multiple-runs)
