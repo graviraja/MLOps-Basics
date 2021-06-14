@@ -131,3 +131,5 @@ dmypy.json
 */logs/*
 */models/*
 */wandb/*
+*/outputs/*
+*/multirun/*
