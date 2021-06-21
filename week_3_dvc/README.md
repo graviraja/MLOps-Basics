@@ -34,7 +34,7 @@ Once the training is completed in the end of the logs you will see something lik
 
 ```
 wandb: Synced 5 W&B file(s), 4 media file(s), 3 artifact file(s) and 0 other file(s)
-wandb: 
+wandb:
 wandb: Synced proud-mountain-77: https://wandb.ai/raviraja/MLOps%20Basics/runs/3vp1twdc
 ```
 
@@ -48,9 +48,13 @@ After training, update the model checkpoint path in the code and run
 python inference.py
 ```
 
+### Versioning data
+
+Refer to the blog: [DVC Configuration](https://www.ravirajag.dev/blog/mlops-dvc)
+
 ### Running notebooks
 
-I am using [Jupyter lab](https://jupyter.org/install) to run the notebooks. 
+I am using [Jupyter lab](https://jupyter.org/install) to run the notebooks.
 
 Since I am using a virtualenv, when I run the command `jupyter lab` it might or might not use the virtualenv.
 
