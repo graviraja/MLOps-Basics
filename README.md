@@ -78,3 +78,30 @@ References
 - [Hydra Documentation](https://hydra.cc/docs/intro)
 
 - [Simone Tutorial on Hydra](https://www.sscardapane.it/tutorials/hydra-tutorial/#executing-multiple-runs)
+
+
+## Week 3: Data Version Control - DVC
+
+<img src="https://img.shields.io/static/v1.svg?style=for-the-badge&label=difficulty&message=easy&color=green"/>
+
+Refer to the [Blog Post here](https://www.ravirajag.dev/blog/mlops-dvc)
+
+Classical code version control systems are not designed to handle large files, which make cloning and storing the history impractical. Which are very common in Machine Learning.
+
+The scope of this week is to understand the following topics:
+
+- `Basics of DVC`
+- `Initialising DVC`
+- `Configuring Remote Storage`
+- `Saving Model to the Remote Storage`
+- `Versioning the models`
+
+Following tech stack is used:
+
+- [DVC](https://dvc.org/)
+
+References
+
+- [DVC Documentation](https://dvc.org/doc)
+
+- [DVC Tutorial on Versioning data](https://www.youtube.com/watch?v=kLKBcPonMYw)
