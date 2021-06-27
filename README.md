@@ -105,3 +105,39 @@ References
 - [DVC Documentation](https://dvc.org/doc)
 
 - [DVC Tutorial on Versioning data](https://www.youtube.com/watch?v=kLKBcPonMYw)
+
+## Week 4: Data Version Control - DVC
+
+<img src="https://img.shields.io/static/v1.svg?style=for-the-badge&label=difficulty&message=medium&color=orange"/>
+
+Refer to the [Blog Post here](https://www.ravirajag.dev/blog/mlops-onnx)
+
+Why do we need model packaging? Models can be built using any machine learning framework available out there (sklearn, tensorflow, pytorch, etc.). We might want to deploy models in different environments like (mobile, web, raspberry pi) or want to run in a different framework (trained in pytorch, inference in tensorflow).
+A common file format to enable AI developers to use models with a variety of frameworks, tools, runtimes, and compilers will help a lot.
+
+This is acheived by a community project `ONNX`.
+
+The scope of this week is to understand the following topics:
+
+- `What is ONNX?`
+
+- `How to convert a trained model to ONNX format?`
+
+- `What is ONNX Runtime?`
+
+- `How to run ONNX converted model in ONNX Runtime?`
+
+- `Comparisions`
+
+
+Following tech stack is used:
+
+- [ONNX](https://onnx.ai/)
+- [ONNXRuntime](https://www.onnxruntime.ai/)
+
+References
+
+- [Abhishek Thakur tutorial on onnx model conversion](https://www.youtube.com/watch?v=7nutT3Aacyw)
+- [Pytorch Lightning documentation on onnx conversion](https://pytorch-lightning.readthedocs.io/en/stable/common/production_inference.html)
+- [Huggingface Blog on ONNXRuntime](https://medium.com/microsoftazure/accelerate-your-nlp-pipelines-using-hugging-face-transformers-and-onnx-runtime-2443578f4333)
+- [Piotr Blog on onnx conversion](https://tugot17.github.io/data-science-blog/onnx/tutorial/2020/09/21/Exporting-lightning-model-to-onnx.html)

@@ -20,7 +20,7 @@ class ColaPredictor:
             torch.tensor([processed["input_ids"]]),
             torch.tensor([processed["attention_mask"]]),
         )
-        scores = self.softmax(logits[0]).tolist()
+        scores = self.softmax(logits[0]).tolist()[0]
         predictions = []
         for score, label in zip(scores, self.lables):
             predictions.append({"label": label, "score": score})
@@ -29,5 +29,5 @@ class ColaPredictor:
 
 if __name__ == "__main__":
     sentence = "The boy is sitting on a bench"
-    predictor = ColaPredictor("./models/epoch=0-step=267.ckpt")
+    predictor = ColaPredictor("./models/best-checkpoint.ckpt")
     print(predictor.predict(sentence))
