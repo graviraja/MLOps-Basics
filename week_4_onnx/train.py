@@ -52,8 +52,9 @@ def main(cfg):
     )
     cola_model = ColaModel(cfg.model.name)
 
+    root_dir = hydra.utils.get_original_cwd()
     checkpoint_callback = ModelCheckpoint(
-        dirpath="./models",
+        dirpath=f"{root_dir}/models",
         filename="best-checkpoint",
         monitor="valid/loss",
         mode="min",
@@ -66,8 +67,8 @@ def main(cfg):
         callbacks=[checkpoint_callback, SamplesVisualisationLogger(cola_data)],
         log_every_n_steps=cfg.training.log_every_n_steps,
         deterministic=cfg.training.deterministic,
-        limit_train_batches=cfg.training.limit_train_batches,
-        limit_val_batches=cfg.training.limit_val_batches,
+        # limit_train_batches=cfg.training.limit_train_batches,
+        # limit_val_batches=cfg.training.limit_val_batches,
     )
     trainer.fit(cola_model, cola_data)
     wandb.finish()
