@@ -133,3 +133,6 @@ dmypy.json
 */wandb/*
 */outputs/*
 */multirun/*
+
+.DS_Store
+*/.DS_Store

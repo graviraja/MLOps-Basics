@@ -21,6 +21,8 @@ The project I have implemented is a simple classification problem. The scope of 
 - `How to train the model?`
 - `How to do the inference?`
 
+![pl](images/pl.jpeg)
+
 Following tech stack is used:
 
 - [Huggingface Datasets](https://github.com/huggingface/datasets)
@@ -41,6 +43,8 @@ The scope of this week is to understand the following topics:
 - `How to compute metrics and log them in W&B?`
 - `How to add plots in W&B?`
 - `How to add data samples to W&B?`
+
+![wannb](images/wandb.png)
 
 Following tech stack is used:
 
@@ -69,6 +73,8 @@ The scope of this week is to understand the following topics:
 - `Variable Interpolation`
 - `How to run model with different parameter combinations?`
 
+![hydra](images/hydra.png)
+
 Following tech stack is used:
 
 - [Hydra](https://hydra.cc/)
@@ -96,6 +102,8 @@ The scope of this week is to understand the following topics:
 - `Saving Model to the Remote Storage`
 - `Versioning the models`
 
+![dvc](images/dvc.png)
+
 Following tech stack is used:
 
 - [DVC](https://dvc.org/)
@@ -106,7 +114,7 @@ References
 
 - [DVC Tutorial on Versioning data](https://www.youtube.com/watch?v=kLKBcPonMYw)
 
-## Week 4: Data Version Control - DVC
+## Week 4: Model Packaging - ONNX
 
 <img src="https://img.shields.io/static/v1.svg?style=for-the-badge&label=difficulty&message=medium&color=orange"/>
 
@@ -129,6 +137,7 @@ The scope of this week is to understand the following topics:
 
 - `Comparisions`
 
+![ONNX](images/onnx.jpeg)
 
 Following tech stack is used:
 
