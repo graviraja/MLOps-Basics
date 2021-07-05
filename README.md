@@ -176,3 +176,7 @@ The scope of this week is to understand the following topics:
 - `Docker Compose`
 
 ![Docker](images/docker_flow.png)
+
+References
+
+- [Analytics vidhya blog](https://www.analyticsvidhya.com/blog/2021/06/a-hands-on-guide-to-containerized-your-machine-learning-workflow-with-docker/)
