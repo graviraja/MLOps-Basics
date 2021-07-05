@@ -150,3 +150,28 @@ References
 - [Pytorch Lightning documentation on onnx conversion](https://pytorch-lightning.readthedocs.io/en/stable/common/production_inference.html)
 - [Huggingface Blog on ONNXRuntime](https://medium.com/microsoftazure/accelerate-your-nlp-pipelines-using-hugging-face-transformers-and-onnx-runtime-2443578f4333)
 - [Piotr Blog on onnx conversion](https://tugot17.github.io/data-science-blog/onnx/tutorial/2020/09/21/Exporting-lightning-model-to-onnx.html)
+
+
+## Week 5: Model Packaging - Docker
+
+<img src="https://img.shields.io/static/v1.svg?style=for-the-badge&label=difficulty&message=easy&color=green"/>
+
+
+Why do we need packaging? We might have to share our application with others, and when they try to run the application most of the time it doesn’t run due to dependencies issues / OS related issues and for that, we say (famous quote across engineers) that `It works on my laptop/system`.
+
+So for others to run the applications they have to set up the same environment as it was run on the host side which means a lot of manual configuration and installation of components.
+
+The solution to these limitations is a technology called Containers.
+
+By containerizing/packaging the application, we can run the application on any cloud platform to get advantages of managed services and autoscaling and reliability, and many more.
+
+The most prominent tool to do the packaging of application is Docker 🛳
+
+The scope of this week is to understand the following topics:
+
+- `FastAPI wrapper`
+- `Basics of Docker`
+- `Building Docker Container`
+- `Docker Compose`
+
+![Docker](images/docker_flow.png)
