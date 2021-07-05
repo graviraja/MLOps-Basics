@@ -156,6 +156,7 @@ References
 
 <img src="https://img.shields.io/static/v1.svg?style=for-the-badge&label=difficulty&message=easy&color=green"/>
 
+Refer to the [Blog Post here](https://www.ravirajag.dev/blog/mlops-docker)
 
 Why do we need packaging? We might have to share our application with others, and when they try to run the application most of the time it doesn’t run due to dependencies issues / OS related issues and for that, we say (famous quote across engineers) that `It works on my laptop/system`.
 
