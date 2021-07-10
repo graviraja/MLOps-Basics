@@ -1,7 +1,7 @@
 name: GitHub Actions Basic Flow
 on: [push]
 jobs:
-  Basic workflow:
+  Basic-workflow:
     runs-on: ubuntu-latest
     steps:
       - run: echo "The job was automatically triggered by a ${{ github.event_name }} event."
