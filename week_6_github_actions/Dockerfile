@@ -7,7 +7,7 @@ RUN pip install -r requirements_inference.txt
 RUN pip install "dvc[gdrive]"
 RUN dvc init --no-scm
 RUN dvc remote add -d storage gdrive://19JK5AFbqOBlrFVwDHjTrf9uvQFtS0954
-RUN apt-get install jq
+RUN sudo apt-get install jq
 RUN printf '%s' $GDRIVE_SERVICE_ACCOUNT | jq . > creds.json
 RUN cat creds.json
 RUN dvc remote modify storage gdrive_use_service_account true
