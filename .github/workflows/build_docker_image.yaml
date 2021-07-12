@@ -23,8 +23,6 @@ jobs:
     - name: Build container
       env:
         GDRIVE_SERVICE_ACCOUNT: ${{ secrets.GDRIVE_SERVICE_ACCOUNT }}
-      # run: |
-      #   echo "$GDRIVE_SERVICE_ACCOUNT"
       run: |
         docker build --build-arg GDRIVE_SERVICE_ACCOUNT="$GDRIVE_SERVICE_ACCOUNT" \
                      --tag inference:latest .
