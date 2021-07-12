@@ -7,7 +7,7 @@ RUN pip install -r requirements_inference.txt
 RUN pip install "dvc[gdrive]"
 RUN dvc init --no-scm
 RUN dvc remote add -d storage gdrive://19JK5AFbqOBlrFVwDHjTrf9uvQFtS0954
-RUN printf '%s\n' $GDRIVE_SERVICE_ACCOUNT > creds.json
+RUN printf '%s' $GDRIVE_SERVICE_ACCOUNT > creds.json
 RUN cat creds.json
 RUN dvc remote modify storage gdrive_use_service_account true
 RUN dvc remote modify storage --local gdrive_service_account_json_file_path creds.json
