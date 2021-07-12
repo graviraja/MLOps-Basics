@@ -2,7 +2,7 @@ FROM huggingface/transformers-pytorch-cpu:latest
 ARG GDRIVE_SERVICE_ACCOUNT
 COPY ./ /app
 WORKDIR /app
-RUN echo $GDRIVE_SERVICE_ACCOUNT
+RUN echo "$GDRIVE_SERVICE_ACCOUNT"
 # RUN pip install -r requirements_inference.txt
 # RUN pip install "dvc[gdrive]"
 # RUN dvc init --no-scm
