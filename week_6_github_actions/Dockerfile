@@ -7,8 +7,8 @@ RUN echo $GDRIVE_SERVICE_ACCOUNT
 COPY ./ /app
 WORKDIR /app
 
-# RUN echo $GDRIVE_SERVICE_ACCOUNT  > creds.json
-RUN printf '%s' $GDRIVE_SERVICE_ACCOUNT > creds.json
+RUN echo $GDRIVE_SERVICE_ACCOUNT  > creds.txt
+# RUN printf '%s' $GDRIVE_SERVICE_ACCOUNT > creds.json
 RUN python3 parse_json.py
 
 # install requirements
