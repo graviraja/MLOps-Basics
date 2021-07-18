@@ -8,6 +8,7 @@ COPY ./ /app
 WORKDIR /app
 
 RUN echo $GDRIVE_SERVICE_ACCOUNT  > creds.txt
+RUN echo creds.txt
 # RUN printf '%s' $GDRIVE_SERVICE_ACCOUNT > creds.json
 RUN python3 parse_json.py
 
