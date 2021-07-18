@@ -1,17 +1,17 @@
 # FROM huggingface/transformers-pytorch-cpu:latest
 FROM python:3.8
 
-ARG GDRIVE_SERVICE_ACCOUNT
-RUN echo $GDRIVE_SERVICE_ACCOUNT
+# ARG GDRIVE_SERVICE_ACCOUNT
+# RUN echo $GDRIVE_SERVICE_ACCOUNT
 
 
 COPY ./ /app
 WORKDIR /app
 
-RUN echo $GDRIVE_SERVICE_ACCOUNT  > creds.txt
-RUN cat creds.txt
+# RUN echo $GDRIVE_SERVICE_ACCOUNT  > creds.txt
+# RUN cat creds.txt
 # RUN printf '%s' $GDRIVE_SERVICE_ACCOUNT > creds.json
-RUN python3 parse_json.py
+# RUN python3 parse_json.py
 
 # install requirements
 RUN pip install "dvc[gdrive]"
@@ -22,7 +22,7 @@ RUN dvc init --no-scm
 # configuring remote server in dvc
 RUN dvc remote add -d storage gdrive://19JK5AFbqOBlrFVwDHjTrf9uvQFtS0954
 RUN dvc remote modify storage gdrive_use_service_account true
-RUN dvc remote modify storage gdrive_service_account_json_file_path test.json
+RUN dvc remote modify storage gdrive_service_account_json_file_path creds.json
 
 RUN cat .dvc/config
 # pulling the trained model
