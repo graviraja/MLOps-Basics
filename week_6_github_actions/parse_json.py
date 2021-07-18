@@ -5,6 +5,7 @@ with open('creds.txt') as f:
 
 print(data)
 data = json.loads(data, strict=False)
+print(data)
 
 with open('test.json', 'w') as f:
 	json.dump(data, f)
