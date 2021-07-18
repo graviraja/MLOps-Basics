@@ -1,6 +1,7 @@
 FROM huggingface/transformers-pytorch-cpu:latest
 
 ARG GDRIVE_SERVICE_ACCOUNT
+RUN echo $GDRIVE_SERVICE_ACCOUNT
 COPY ./ /app
 WORKDIR /app
 
