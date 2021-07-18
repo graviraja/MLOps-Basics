@@ -2,11 +2,13 @@ FROM huggingface/transformers-pytorch-cpu:latest
 
 ARG GDRIVE_SERVICE_ACCOUNT
 RUN echo $GDRIVE_SERVICE_ACCOUNT
+
+
+COPY ./ /app
+WORKDIR /app
+
 RUN echo $GDRIVE_SERVICE_ACCOUNT > creds.json
 RUN python3 parse_json.py
-
-# COPY ./ /app
-# WORKDIR /app
 
 # # install requirements
 # RUN pip install "dvc[gdrive]"
