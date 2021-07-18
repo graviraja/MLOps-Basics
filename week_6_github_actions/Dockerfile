@@ -1,4 +1,5 @@
-FROM huggingface/transformers-pytorch-cpu:latest
+# FROM huggingface/transformers-pytorch-cpu:latest
+FROM python:3.8
 
 ARG GDRIVE_SERVICE_ACCOUNT
 RUN echo $GDRIVE_SERVICE_ACCOUNT
