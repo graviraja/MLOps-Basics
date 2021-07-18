@@ -27,6 +27,7 @@ jobs:
         docker build --build-arg GDRIVE_SERVICE_ACCOUNT="$GDRIVE_SERVICE_ACCOUNT" \
                      --tag inference:latest .
         docker run -p 8000:8000 --name inference_container inference:latest
+  
     # - name: Testing the container
     #   run: |
     #     curl -X 'GET' \
