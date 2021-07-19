@@ -66,6 +66,22 @@ python inference.py
 python inference_onnx.py
 ```
 
+### Google Service account
+
+Create service account using the steps mentioned here: [Create service account](https://www.ravirajag.dev/blog/mlops-github-actions)
+
+### Configuring dvc
+
+```
+dvc init
+dvc remote add -d storage gdrive://19JK5AFbqOBlrFVwDHjTrf9uvQFtS0954
+dvc remote modify storage gdrive_use_service_account true
+dvc remote modify storage gdrive_service_account_json_file_path creds.json
+```
+
+`creds.json` is the file created during service account creation
+
+
 ### Docker
 
 Install the docker using the [instructions here](https://docs.docker.com/engine/install/)
