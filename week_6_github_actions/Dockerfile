@@ -15,7 +15,7 @@ WORKDIR /app
 
 # install requirements
 RUN pip install "dvc[gdrive]"
-# RUN pip install -r requirements_inference.txt
+RUN pip install -r requirements_inference.txt
 
 # initialise dvc
 RUN dvc init --no-scm
