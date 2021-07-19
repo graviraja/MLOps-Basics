@@ -28,9 +28,9 @@ RUN cat .dvc/config
 # pulling the trained model
 RUN dvc pull dvcfiles/trained_model.dvc
 
-# ENV LC_ALL=C.UTF-8
-# ENV LANG=C.UTF-8
+ENV LC_ALL=C.UTF-8
+ENV LANG=C.UTF-8
 
-# # running the application
-# EXPOSE 8000
-# CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
+# running the application
+EXPOSE 8000
+CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]

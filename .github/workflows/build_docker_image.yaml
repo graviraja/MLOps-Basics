@@ -1,12 +1,5 @@
 name: Create Docker Container
 
-# on:
-#   pull_request: 
-#     branches:
-#       - master
-#     paths:
-#       - "week_6_github_actions/**"
-
 on: [push]
 
 jobs:
@@ -25,3 +18,6 @@ jobs:
         docker network create data
         docker build --tag inference:latest .
         docker run -d -p 8000:8000 --network data --name inference_container inference:latest
+        curl -X 'GET' \
+        'http://localhost:8000/predict?text=this%20is%20a%20sample%20sentence' \
+        -H 'accept: application/json'
