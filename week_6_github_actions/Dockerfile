@@ -1,17 +1,7 @@
-# FROM huggingface/transformers-pytorch-cpu:latest
-FROM python:3.8
-
-# ARG GDRIVE_SERVICE_ACCOUNT
-# RUN echo $GDRIVE_SERVICE_ACCOUNT
-
+FROM huggingface/transformers-pytorch-cpu:latest
 
 COPY ./ /app
 WORKDIR /app
-
-# RUN echo $GDRIVE_SERVICE_ACCOUNT  > creds.txt
-# RUN cat creds.txt
-# RUN printf '%s' $GDRIVE_SERVICE_ACCOUNT > creds.json
-# RUN python3 parse_json.py
 
 # install requirements
 RUN pip install "dvc[gdrive]"
