@@ -21,23 +21,7 @@ jobs:
       with:
         ref: ${{ github.ref }}
     - name: Build container
-      env:
-        GDRIVE_SERVICE_ACCOUNT: ${{ secrets.GDRIVE_SERVICE_ACCOUNT }}
       run: |
-        docker build --build-arg GDRIVE_SERVICE_ACCOUNT="$GDRIVE_SERVICE_ACCOUNT" \
-                     --tag inference:latest .
-        # docker run -d -p 8000:8000 --name inference_container inference:latest
-    - name: Create Docker Network
-      run: docker network create data
-    - name: Run Container
-      run: docker run -d -p 8000:8000 --network data --name inference_container inference:latest
-    - name: curl
-      run: docker exec --rm --network data inference_container curl -X 'GET' \
-        'http://0.0.0.0:8000/predict?text=this%20is%20a%20sample%20sentence' \
-        -H 'accept: application/json'
-    # - name: Testing the container
-    #   run: |
-    #     curl -X 'GET' \
-    #     'http://0.0.0.0:8000/predict?text=this%20is%20a%20sample%20sentence' \
-    #     -H 'accept: application/json'
-
+        docker network create data
+        docker build --tag inference:latest .
+        docker run -d -p 8000:8000 --network data --name inference_container inference:latest
