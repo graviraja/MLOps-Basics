@@ -1,0 +1,21 @@
+name: GitHub Actions Basic Flow
+on: [push]
+jobs:
+  Basic-workflow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Basic Information
+        run: |
+          echo "🎬 The job was automatically triggered by a ${{ github.event_name }} event."
+          echo "💻 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+          echo "🎋 Workflow is running on the branch ${{ github.ref }}"
+      - name: Checking out the repository
+        uses: actions/checkout@v2
+      - name: Information after checking out
+        run: |
+          echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+          echo "🖥️ The workflow is now ready to test your code on the runner."
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }}
+      - run: echo "🍏 This job's status is ${{ job.status }}."
