@@ -180,3 +180,31 @@ The scope of this week is to understand the following topics:
 References
 
 - [Analytics vidhya blog](https://www.analyticsvidhya.com/blog/2021/06/a-hands-on-guide-to-containerized-your-machine-learning-workflow-with-docker/)
+
+
+## Week 6: CI/CD - GitHub Actions
+
+<img src="https://img.shields.io/static/v1.svg?style=for-the-badge&label=difficulty&message=medium&color=orange"/>
+
+Refer to the [Blog Post here](https://www.ravirajag.dev/blog/mlops-github-actions)
+
+CI/CD is a coding philosophy and set of practices with which you can continuously build, test, and deploy iterative code changes.
+
+This iterative process helps reduce the chance that you develop new code based on a buggy or failed previous versions. With this method, you strive to have less human intervention or even no intervention at all, from the development of new code until its deployment.
+
+In this post, I will be going through the following topics:
+
+- Basics of GitHub Actions
+- First GitHub Action
+- Creating Google Service Account
+- Giving access to Service account
+- Configuring DVC to use Google Service account
+- Configuring Github Action
+
+![Docker](images/basic_flow.png)
+
+References
+
+- [Configuring service account](https://dvc.org/doc/user-guide/setup-google-drive-remote)
+
+- [Github actions](https://docs.github.com/en/actions/quickstart)
