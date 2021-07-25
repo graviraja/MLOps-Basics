@@ -1,4 +1,6 @@
 [core]
-    remote = storage
+    remote = model-store
 ['remote "storage"']
     url = gdrive://19JK5AFbqOBlrFVwDHjTrf9uvQFtS0954
+['remote "model-store"']
+    url = s3://models-dvc/trained_models/

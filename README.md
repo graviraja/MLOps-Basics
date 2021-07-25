@@ -208,3 +208,28 @@ References
 - [Configuring service account](https://dvc.org/doc/user-guide/setup-google-drive-remote)
 
 - [Github actions](https://docs.github.com/en/actions/quickstart)
+
+
+## Week 7: Container Registry - AWS ECR
+
+<img src="https://img.shields.io/static/v1.svg?style=for-the-badge&label=difficulty&message=medium&color=orange"/>
+
+Refer to the [Blog Post here](https://www.ravirajag.dev/blog/mlops-container-registry)
+
+A container registry is a place to store container images. A container image is a file comprised of multiple layers which can execute applications in a single instance. Hosting all the images in one stored location allows users to commit, identify and pull images when needed.
+
+Amazon Simple Storage Service (S3) is a storage for the internet. It is designed for large-capacity, low-cost storage provision across multiple geographical regions.
+
+In this week, I will be going through the following topics:
+
+- `Basics of S3`
+
+- `Programmatic access to S3`
+
+- `Configuring AWS S3 as remote storage in DVC`
+
+- `Basics of ECR`
+
+- `Configuring GitHub Actions to use S3, ECR`
+
+![Docker](images/ecr_flow.png)
