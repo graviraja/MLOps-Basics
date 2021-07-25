@@ -66,21 +66,44 @@ python inference.py
 python inference_onnx.py
 ```
 
-### Google Service account
+## S3 & ECR
 
-Create service account using the steps mentioned here: [Create service account](https://www.ravirajag.dev/blog/mlops-github-actions)
+Follow the instructions mentioned in the [blog post](https://www.ravirajag.dev/blog/mlops-container-registry) for creating S3 bucket and ECR repository. 
 
 ### Configuring dvc
 
 ```
-dvc init
-dvc remote add -d storage gdrive://19JK5AFbqOBlrFVwDHjTrf9uvQFtS0954
-dvc remote modify storage gdrive_use_service_account true
-dvc remote modify storage gdrive_service_account_json_file_path creds.json
+dvc init (this has to be done at root folder)
+dvc remote add -d model-store s3://models-dvc/trained_models/
 ```
 
-`creds.json` is the file created during service account creation
+### AWS credentials
 
+Create the credentials as mentioned in the [blog post](https://www.ravirajag.dev/blog/mlops-container-registry)
+
+**Do not share the secrets with others**
+
+Set the ACCESS key and id values in environment variables.
+
+```
+export AWS_ACCESS_KEY_ID=<ACCESS KEY ID>
+export AWS_SECRET_ACCESS_KEY=<ACCESS SECRET>
+```
+
+### Trained model in DVC
+
+Sdd the trained model(onnx) to dvc using the following command:
+
+```shell
+cd dvcfiles
+dvc add ../models/model.onnx --file trained_model.dvc
+```
+
+Push the model to remote storage
+
+```shell
+dvc push trained_model.dvc
+```
 
 ### Docker
 
@@ -89,13 +112,13 @@ Install the docker using the [instructions here](https://docs.docker.com/engine/
 Build the image using the command
 
 ```shell
-docker build -t inference:latest .
+docker build -t mlops-basics:latest .
 ```
 
 Then run the container using the command
 
 ```shell
-docker run -p 8000:8000 --name inference_container inference:latest
+docker run -p 8000:8000 --name inference_container mlops-basics:latest
 ```
 
 (or)
@@ -105,6 +128,30 @@ Build and run the container using the command
 ```shell
 docker-compose up
 ```
+
+### Pushing the image to ECR
+
+Follow the instructions mentioned in [blog post](https://www.ravirajag.dev/blog/mlops-container-registry) for creating ECR repository.
+
+- Authenticating docker client to ECR
+
+```
+aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 246113150184.dkr.ecr.us-west-2.amazonaws.com
+```
+
+- Tagging the image
+
+```
+docker tag mlops-basics:latest 246113150184.dkr.ecr.us-west-2.amazonaws.com/mlops-basics:latest
+```
+
+- Pushing the image
+
+```
+docker push 246113150184.dkr.ecr.us-west-2.amazonaws.com/mlops-basics:latest
+```
+
+Refer to `.github/workflows/build_docker_image.yaml` file for automatically creating the docker image with trained model and pushing it to ECR.
 
 
 ### Running notebooks
