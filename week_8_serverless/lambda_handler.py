@@ -17,14 +17,15 @@ def lambda_handler(event, context):
 		http_method = event["httpMethod"]
 		body = event["body"]
 		body = json.loads(body)
-		if http_method == "GET":
-			sentence = event["queryStringParameters"]["sentence"]
-			return inferencing_instance.predict(sentence)
-		elif http_method == "POST":
-			print(event)
-			print(body)
-			print(body["sentence"])
-			return inferencing_instance.predict(body["sentence"])
+		print(event)
+		print(body)
+		print(body["sentence"])
+		response = inferencing_instance.predict(body["sentence"])
+		return {
+			"statusCode": 200,
+			"headers": {},
+			"body": json.dumps(response)
+		}
 	else:
 		return inferencing_instance.predict(event["sentence"])
 
