@@ -12,3 +12,8 @@ def lambda_handler(event, context):
 	"""
 	print(event)
 	return inferencing_instance.predict(event["sentence"])
+
+
+if __name__ == "__main__":
+	test = {"sentence": "this is a sample sentence"}
+	lambda_handler(test, None)

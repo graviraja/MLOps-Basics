@@ -58,4 +58,5 @@ RUN dvc remote add -d model-store s3://models-dvc/trained_models/
 # pulling the trained model
 RUN dvc pull dvcfiles/trained_model.dvc
 RUN ls
+RUN python lambda_handler.py
 CMD [ "lambda_handler.lambda_handler"]
