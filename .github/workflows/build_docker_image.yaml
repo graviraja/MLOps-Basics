@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./week_7_ecr
+        working-directory: ./week_8_serverless
     steps:
     - name: Checkout
       uses: actions/checkout@v2
