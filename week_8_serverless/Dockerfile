@@ -21,13 +21,14 @@ RUN dvc init --no-scm
 # configuring remote server in dvc
 RUN dvc remote add -d model-store s3://models-dvc/trained_models/
 
-RUN cat .dvc/config
 # pulling the trained model
 RUN dvc pull dvcfiles/trained_model.dvc
 
 ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
+ENV PYTHONPATH "${PYTHONPATH}:./"
+
+RUN ls
 
 # running the application
-EXPOSE 8000
-CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD [ "lambda_handler.lambda_handler" ]
