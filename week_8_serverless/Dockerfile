@@ -31,7 +31,7 @@ ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
 ENV PYTHONPATH "${PYTHONPATH}:./"
 RUN ls
-RUN python lambda_handler.py
+RUN python3 lambda_handler.py
 RUN chmod -R 0755 $MODEL_DIR
 CMD [ "lambda_handler.lambda_handler"]
 
