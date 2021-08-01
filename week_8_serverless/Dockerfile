@@ -37,7 +37,10 @@ FROM amazon/aws-lambda-python
 ARG AWS_ACCESS_KEY_ID
 ARG AWS_SECRET_ACCESS_KEY
 ARG MODEL_DIR=./models
+RUN mkdir $MODEL_DIR
 
+ENV TRANSFORMERS_CACHE=$MODEL_DIR \
+    TRANSFORMERS_VERBOSITY=error
 
 ENV AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID \
     AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
@@ -59,4 +62,5 @@ RUN dvc remote add -d model-store s3://models-dvc/trained_models/
 RUN dvc pull dvcfiles/trained_model.dvc
 RUN ls
 RUN python lambda_handler.py
+RUN chmod -R 0755 $MODEL_DIR
 CMD [ "lambda_handler.lambda_handler"]
