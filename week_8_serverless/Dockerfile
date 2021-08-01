@@ -47,7 +47,6 @@ RUN yum install git -y && yum -y install gcc-c++
 COPY requirements_inference.txt requirements_inference.txt
 RUN pip install -r requirements_inference.txt --no-cache-dir
 COPY ./ ./
-RUN chmod -R 0755 $MODEL_DIR
 ENV PYTHONPATH "${PYTHONPATH}:./"
 ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
