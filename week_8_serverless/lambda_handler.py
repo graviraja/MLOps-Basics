@@ -15,11 +15,15 @@ def lambda_handler(event, context):
 	
 	if "resource" in event.keys():
 		http_method = event["httpMethod"]
+		body = event["body"]
+		body = json.loads(body)
 		if http_method == "GET":
 			sentence = event["queryStringParameters"]["sentence"]
 			return inferencing_instance.predict(sentence)
 		elif http_method == "POST":
-			body = json.loads(event["body"])
+			print(event)
+			print(body)
+			print(body["sentence"])
 			return inferencing_instance.predict(body["sentence"])
 	else:
 		return inferencing_instance.predict(event["sentence"])
