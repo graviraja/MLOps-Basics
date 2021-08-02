@@ -115,6 +115,8 @@ Build the image using the command
 docker build -t mlops-basics:latest .
 ```
 
+**The default command in dockerfile is modified to support the lambda. If you want to run without lambda use the last weeks dockerfile.**
+
 Then run the container using the command
 
 ```shell
@@ -152,6 +154,10 @@ docker push 246113150184.dkr.ecr.us-west-2.amazonaws.com/mlops-basics:latest
 ```
 
 Refer to `.github/workflows/build_docker_image.yaml` file for automatically creating the docker image with trained model and pushing it to ECR.
+
+### Serveless - Lambda
+
+Refer to the [Blog Post here](https://www.ravirajag.dev/blog/mlops-serverless) for detailed instructions on configuring lambda with the docker image and invoking it using a API.
 
 
 ### Running notebooks
