@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./week_7_ecr
+        working-directory: ./week_8_serverless
     steps:
     - name: Checkout
       uses: actions/checkout@v2
@@ -33,3 +33,6 @@ jobs:
         secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         region: us-west-2
         image: mlops-basics:latest
+    
+    - name: Update lambda with image
+      run: aws lambda update-function-code --function-name  MLOps-Basics --image-uri 246113150184.dkr.ecr.us-west-2.amazonaws.com/mlops-basics:latest
