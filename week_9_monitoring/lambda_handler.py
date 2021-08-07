@@ -25,7 +25,7 @@ def lambda_handler(event, context):
 		logger.info(f"Got the input: {body['sentence']}")
 
 		response = inferencing_instance.predict(body["sentence"])
-		logger.info(response)
+		logger.info(json.dumps(response))
 		return {
 			"statusCode": 200,
 			"headers": {},
