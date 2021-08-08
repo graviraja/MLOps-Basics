@@ -159,6 +159,10 @@ Refer to `.github/workflows/build_docker_image.yaml` file for automatically crea
 
 Refer to the [Blog Post here](https://www.ravirajag.dev/blog/mlops-serverless) for detailed instructions on configuring lambda with the docker image and invoking it using a API.
 
+### Monitoring - Kibana
+
+Refer to the [Blog Post here](https://www.ravirajag.dev/blog/mlops-monitoring) for detailed instructions on configuring kibana using elasticsarch cluster and integrating with cloudwatch logs.
+
 
 ### Running notebooks
 
