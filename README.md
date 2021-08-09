@@ -256,3 +256,43 @@ In this week, I will be going through the following topics:
 - `Automating deployment to Lambda using Github Actions`
 
 ![Docker](images/lambda_flow.png)
+
+
+## Week 9: Prediction Monitoring - Kibana
+
+<img src="https://img.shields.io/static/v1.svg?style=for-the-badge&label=difficulty&message=medium&color=orange"/>
+
+Refer to the [Blog Post here](https://www.ravirajag.dev/blog/mlops-monitoring)
+
+
+Monitoring systems can help give us confidence that our systems are running smoothly and, in the event of a system failure, can quickly provide appropriate context when diagnosing the root cause.
+
+Things we want to monitor during and training and inference are different. During training we are concered about whether the loss is decreasing or not, whether the model is overfitting, etc.
+
+But, during inference, We like to have confidence that our model is making correct predictions.
+
+There are many reasons why a model can fail to make useful predictions:
+
+- The underlying data distribution has shifted over time and the model has gone stale. i.e inference data characteristics is different from the data characteristics used to train the model.
+
+- The inference data stream contains edge cases (not seen during model training). In this scenarios model might perform poorly or can lead to errors.
+
+- The model was misconfigured in its production deployment. (Configuration issues are common)
+
+In all of these scenarios, the model could still make a `successful` prediction from a service perspective, but the predictions will likely not be useful. Monitoring machine learning models can help us detect such scenarios and intervene (e.g. trigger a model retraining/deployment pipeline).
+
+In this week, I will be going through the following topics:
+
+- `Basics of Cloudwatch Logs`
+
+- `Creating Elastic Search Cluster`
+
+- `Configuring Cloudwatch Logs with Elastic Search`
+
+- `Creating Index Patterns in Kibana`
+
+- `Creating Kibana Visualisations`
+
+- `Creating Kibana Dashboard`
+
+![Docker](images/kibana_flow.png)
