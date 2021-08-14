@@ -6,6 +6,8 @@
 
 The goal of the series is to understand the basics of MLOps like model building, monitoring, configurations, testing, packaging, deployment, cicd, etc.
 
+![pl](images/summary.png)
+
 ## Week 0: Project Setup
 
 <img src="https://img.shields.io/static/v1.svg?style=for-the-badge&label=difficulty&message=easy&color=green"/>
