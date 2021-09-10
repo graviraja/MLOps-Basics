@@ -47,6 +47,7 @@ class ColaModel(pl.LightningModule):
         train_acc = self.accuracy_metric(preds, batch["label"])
         self.log("train/loss", outputs.loss, prog_bar=True, on_epoch=True)
         self.log("train/acc", train_acc, prog_bar=True, on_epoch=True)
+        return outputs.loss
 
     def validation_step(self, batch, batch_idx):
         labels = batch["label"]
