@@ -21,7 +21,8 @@ class ColaModel(pl.LightningModule):
             model_name, num_labels=2
         )
         self.num_classes = 2
-        self.accuracy_metric = torchmetrics.Accuracy()
+        self.train_accuracy_metric = torchmetrics.Accuracy()
+        self.val_accuracy_metric = torchmetrics.Accuracy()
         self.f1_metric = torchmetrics.F1(num_classes=self.num_classes)
         self.precision_macro_metric = torchmetrics.Precision(
             average="macro", num_classes=self.num_classes
@@ -44,7 +45,7 @@ class ColaModel(pl.LightningModule):
         )
         # loss = F.cross_entropy(logits, batch["label"])
         preds = torch.argmax(outputs.logits, 1)
-        train_acc = self.accuracy_metric(preds, batch["label"])
+        train_acc = self.train_accuracy_metric(preds, batch["label"])
         self.log("train/loss", outputs.loss, prog_bar=True, on_epoch=True)
         self.log("train/acc", train_acc, prog_bar=True, on_epoch=True)
         return outputs.loss
@@ -57,7 +58,7 @@ class ColaModel(pl.LightningModule):
         preds = torch.argmax(outputs.logits, 1)
 
         # Metrics
-        valid_acc = self.accuracy_metric(preds, labels)
+        valid_acc = self.val_accuracy_metric(preds, labels)
         precision_macro = self.precision_macro_metric(preds, labels)
         recall_macro = self.recall_macro_metric(preds, labels)
         precision_micro = self.precision_micro_metric(preds, labels)
