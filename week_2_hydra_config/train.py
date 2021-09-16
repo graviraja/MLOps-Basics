@@ -7,6 +7,7 @@ import pandas as pd
 import pytorch_lightning as pl
 from omegaconf.omegaconf import OmegaConf
 from pytorch_lightning.callbacks import ModelCheckpoint
+from pytorch_lightning.callbacks.early_stopping import EarlyStopping
 from pytorch_lightning.loggers import WandbLogger
 
 from data import DataModule
@@ -59,11 +60,15 @@ def main(cfg):
         mode="min",
     )
 
+    early_stopping_callback = EarlyStopping(
+        monitor="val_loss", patience=3, verbose=True, mode="min"
+    )
+
     wandb_logger = WandbLogger(project="MLOps Basics", entity="raviraja")
     trainer = pl.Trainer(
         max_epochs=cfg.training.max_epochs,
         logger=wandb_logger,
-        callbacks=[checkpoint_callback, SamplesVisualisationLogger(cola_data)],
+        callbacks=[checkpoint_callback, SamplesVisualisationLogger(cola_data), early_stopping_callback],
         log_every_n_steps=cfg.training.log_every_n_steps,
         deterministic=cfg.training.deterministic,
         limit_train_batches=cfg.training.limit_train_batches,
