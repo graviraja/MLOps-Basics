@@ -62,7 +62,7 @@ def main(cfg):
     )
 
     early_stopping_callback = EarlyStopping(
-        monitor="val_loss", patience=3, verbose=True, mode="min"
+        monitor="valid/loss", patience=3, verbose=True, mode="min"
     )
 
     wandb_logger = WandbLogger(project="MLOps Basics", entity="raviraja")

@@ -49,7 +49,7 @@ def main():
     )
 
     early_stopping_callback = EarlyStopping(
-        monitor="val_loss", patience=3, verbose=True, mode="min"
+        monitor="valid/loss", patience=3, verbose=True, mode="min"
     )
 
     wandb_logger = WandbLogger(project="MLOps Basics", entity="raviraja")
@@ -60,7 +60,7 @@ def main():
         log_every_n_steps=10,
         deterministic=True,
         # limit_train_batches=0.25,
-        # limit_val_batches=0.25,
+        # limit_val_batches=0.25
     )
     trainer.fit(cola_model, cola_data)
 
