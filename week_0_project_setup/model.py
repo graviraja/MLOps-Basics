@@ -23,13 +23,13 @@ class ColaModel(pl.LightningModule):
         return logits
 
     def training_step(self, batch, batch_idx):
-        logits = self.forward(batch["input_ids"], batch["attention_mask"])
+        logits = self(batch["input_ids"], batch["attention_mask"])
         loss = F.cross_entropy(logits, batch["label"])
         self.log("train_loss", loss, prog_bar=True)
         return loss
 
     def validation_step(self, batch, batch_idx):
-        logits = self.forward(batch["input_ids"], batch["attention_mask"])
+        logits = self(batch["input_ids"], batch["attention_mask"])
         loss = F.cross_entropy(logits, batch["label"])
         _, preds = torch.max(logits, dim=1)
         val_acc = accuracy_score(preds.cpu(), batch["label"].cpu())
