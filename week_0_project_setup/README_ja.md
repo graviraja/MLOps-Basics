@@ -17,7 +17,7 @@ conda activate project-setup
 pip install -r requirements.txt
 ```
 
-※Folk 元と一部依存ライブラリのバージョンを変更しています。（参考: [https://github.com/graviraja/MLOps-Basics/issues/31](https://github.com/graviraja/MLOps-Basics/issues/31)）
+※Fork 元と一部依存ライブラリのバージョンを変更しています。（参考: [https://github.com/graviraja/MLOps-Basics/issues/31](https://github.com/graviraja/MLOps-Basics/issues/31)）
 
 ```diff
 pytorch-lightning==1.2.10
