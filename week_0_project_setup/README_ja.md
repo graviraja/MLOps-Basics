@@ -17,6 +17,17 @@ conda activate project-setup
 pip install -r requirements.txt
 ```
 
+※Folk 元と一部依存ライブラリのバージョンを変更しています。（参考: [https://github.com/graviraja/MLOps-Basics/issues/31](https://github.com/graviraja/MLOps-Basics/issues/31)）
+
+```diff
+pytorch-lightning==1.2.10
+- datasets==1.6.2
++ datasets==2.10.1
+- transformers==4.5.1
++ transformers==4.27.3
+scikit-learn==0.24.2
+```
+
 ## Running
 
 ### Training
