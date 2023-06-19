@@ -17,6 +17,15 @@ conda activate project-setup
 pip install -r requirements.txt
 ```
 
+※Fork 元と一部依存ライブラリのバージョンを変更しています。（参考: [https://github.com/graviraja/MLOps-Basics/issues/31](https://github.com/graviraja/MLOps-Basics/issues/31)）
+
+```diff
+- datasets==1.6.2
++ datasets==2.10.1
+- transformers==4.5.1
++ transformers==4.27.3
+```
+
 ## Running
 
 ### Training
@@ -25,6 +34,13 @@ pip install -r requirements.txt
 
 ```bash
 python train.py
+```
+
+WandB 側で Project(MLOps Basics) の作成が必要でした。加えて、`train.py` にも entity を自身のユーザー名へと修正が必要です。
+
+```diff
+- wandb_logger = WandbLogger(project="MLOps Basics", entity="raviraja")
++ wandb_logger = WandbLogger(project="MLOps Basics", entity="shukawam")
 ```
 
 ### Monitoring
@@ -55,9 +71,9 @@ python inference.py
 
 ノートブックの実行に[Jupyter lab](https://jupyter.org/install)を使用しています。
 
-virtualenvを使っているので、`jupyter lab`というコマンドを実行すると、virtualenvが使われる場合と使われない場合があります。
+virtualenv を使っているので、`jupyter lab`というコマンドを実行すると、virtualenv が使われる場合と使われない場合があります。
 
-virutalenvを確実に使用するためには、`jupyter lab`を実行する前に以下のコマンドを実行してください。
+virutalenv を確実に使用するためには、`jupyter lab`を実行する前に以下のコマンドを実行してください。
 
 ```bash
 conda install ipykernel
