@@ -38,6 +38,13 @@ scikit-learn==0.24.2
 python train.py
 ```
 
+WandB 側で Project(MLOps Basics) の作成が必要でした。加えて、`train.py` にも entity を自身のユーザー名へと修正が必要です。
+
+```diff
+- wandb_logger = WandbLogger(project="MLOps Basics", entity="raviraja")
++ wandb_logger = WandbLogger(project="MLOps Basics", entity="shukawam")
+```
+
 ### Monitoring
 
 ログの最後にトレーニングが完了すると、次のように表示されます：
