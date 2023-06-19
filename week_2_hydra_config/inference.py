@@ -29,5 +29,5 @@ class ColaPredictor:
 
 if __name__ == "__main__":
     sentence = "The boy is sitting on a bench"
-    predictor = ColaPredictor("./models/best-checkpoint.ckpt")
+    predictor = ColaPredictor("./outputs/2023-06-19/03-43-46/models/best-checkpoint.ckpt")
     print(predictor.predict(sentence))
