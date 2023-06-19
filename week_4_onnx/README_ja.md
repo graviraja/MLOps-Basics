@@ -63,7 +63,11 @@ Refer to the blog: [DVC Configuration](https://www.ravirajag.dev/blog/mlops-dvc)
 
 ### Exporting model to ONNX
 
-ブログを参照してください： [DVC コンフィギュレーション](https://www.ravirajag.dev/blog/mlops-dvc)
+モデルの学習が完了したら、以下のコマンドでモデルを変換します：
+
+```bash
+python convert_model_to_onnx.py
+```
 
 ### Inference
 
