@@ -12,7 +12,7 @@ The goal of the series is to understand the basics of MLOps like model building,
 
 <img src="https://img.shields.io/static/v1.svg?style=for-the-badge&label=difficulty&message=easy&color=green"/>
 
-Refer to the [Blog Post here](https://www.ravirajag.dev/blog/mlops-project-setup-part1)
+Refer to the [Blog Post here](https://deep-learning-blogs.vercel.app/blog/mlops-project-setup-part1)
 
 The project I have implemented is a simple classification problem. The scope of this week is to understand the following topics:
 
