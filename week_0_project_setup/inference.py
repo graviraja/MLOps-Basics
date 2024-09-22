@@ -11,7 +11,7 @@ class ColaPredictor:
         self.model.freeze()
         self.processor = DataModule()
         self.softmax = torch.nn.Softmax(dim=0)
-        self.lables = ["unacceptable", "acceptable"]
+        self.labels = ["unacceptable", "acceptable"]
 
     def predict(self, text):
         inference_sample = {"sentence": text}
@@ -22,7 +22,7 @@ class ColaPredictor:
         )
         scores = self.softmax(logits[0]).tolist()
         predictions = []
-        for score, label in zip(scores, self.lables):
+        for score, label in zip(scores, self.labels):
             predictions.append({"label": label, "score": score})
         return predictions
 
