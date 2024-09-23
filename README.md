@@ -137,7 +137,7 @@ The scope of this week is to understand the following topics:
 
 - `How to run ONNX converted model in ONNX Runtime?`
 
-- `Comparisions`
+- `Comparisons`
 
 ![ONNX](images/onnx.jpeg)
 
