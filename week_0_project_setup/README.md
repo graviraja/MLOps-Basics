@@ -12,6 +12,8 @@ conda create --name project-setup python=3.8
 conda activate project-setup
 ```
 
+__NOTE: You can use any environment name you wish. For example a conda environment MLProj38__
+
 Install the requirements:
 
 ```
@@ -49,5 +51,7 @@ conda install ipykernel
 python -m ipykernel install --user --name project-setup
 pip install ipywidgets
 ```
+
+Note: After this to use the notebook you still have to install notebooks or lab, through for example `pip install notebook` 
 
 

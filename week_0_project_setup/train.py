@@ -20,7 +20,7 @@ def main():
 
     trainer = pl.Trainer(
         default_root_dir="logs",
-        gpus=(1 if torch.cuda.is_available() else 0),
+        accelerator='auto',
         max_epochs=5,
         fast_dev_run=False,
         logger=pl.loggers.TensorBoardLogger("logs/", name="cola", version=1),
