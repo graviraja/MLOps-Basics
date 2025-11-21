@@ -10,7 +10,7 @@ jobs:
           echo "💻 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
           echo "🎋 Workflow is running on the branch ${{ github.ref }}"
       - name: Checking out the repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Information after checking out
         run: |
           echo "💡 The ${{ github.repository }} repository has been cloned to the runner."

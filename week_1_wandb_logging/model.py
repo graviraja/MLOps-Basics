@@ -14,22 +14,23 @@ class ColaModel(pl.LightningModule):
     def __init__(self, model_name="google/bert_uncased_L-2_H-128_A-2", lr=3e-5):
         super(ColaModel, self).__init__()
         self.save_hyperparameters()
+        self.validation_step_outputs = []
 
         self.bert = AutoModelForSequenceClassification.from_pretrained(
             model_name, num_labels=2
         )
         self.num_classes = 2
-        self.train_accuracy_metric = torchmetrics.Accuracy()
-        self.val_accuracy_metric = torchmetrics.Accuracy()
-        self.f1_metric = torchmetrics.F1(num_classes=self.num_classes)
+        self.train_accuracy_metric = torchmetrics.Accuracy(task="multiclass", num_classes=self.num_classes)
+        self.val_accuracy_metric = torchmetrics.Accuracy(task="multiclass", num_classes=self.num_classes)
+        self.f1_metric = torchmetrics.F1Score(task="multiclass", num_classes=self.num_classes, average="macro")
         self.precision_macro_metric = torchmetrics.Precision(
-            average="macro", num_classes=self.num_classes
+            task="multiclass", average="macro", num_classes=self.num_classes
         )
         self.recall_macro_metric = torchmetrics.Recall(
-            average="macro", num_classes=self.num_classes
+            task="multiclass", average="macro", num_classes=self.num_classes
         )
-        self.precision_micro_metric = torchmetrics.Precision(average="micro")
-        self.recall_micro_metric = torchmetrics.Recall(average="micro")
+        self.precision_micro_metric = torchmetrics.Precision(task="multiclass", average="micro", num_classes=self.num_classes)
+        self.recall_micro_metric = torchmetrics.Recall(task="multiclass", average="micro", num_classes=self.num_classes)
 
     def forward(self, input_ids, attention_mask, labels=None):
         outputs = self.bert(
@@ -71,22 +72,36 @@ class ColaModel(pl.LightningModule):
         self.log("valid/precision_micro", precision_micro, prog_bar=True, on_epoch=True)
         self.log("valid/recall_micro", recall_micro, prog_bar=True, on_epoch=True)
         self.log("valid/f1", f1, prog_bar=True, on_epoch=True)
-        return {"labels": labels, "logits": outputs.logits}
 
-    def validation_epoch_end(self, outputs):
+        # Store outputs for epoch end
+        output_dict = {"labels": labels, "logits": outputs.logits}
+        self.validation_step_outputs.append(output_dict)
+        return output_dict
+
+    def on_validation_epoch_end(self):
+        # Retrieve stored outputs from validation steps
+        outputs = self.validation_step_outputs if hasattr(self, 'validation_step_outputs') else []
+        if not outputs:
+            return
+
         labels = torch.cat([x["labels"] for x in outputs])
         logits = torch.cat([x["logits"] for x in outputs])
         preds = torch.argmax(logits, 1)
 
         ## There are multiple ways to track the metrics
         # 1. Confusion matrix plotting using inbuilt W&B method
-        self.logger.experiment.log(
-            {
-                "conf": wandb.plot.confusion_matrix(
-                    probs=logits.numpy(), y_true=labels.numpy()
-                )
-            }
-        )
+        if self.logger is not None:
+            self.logger.experiment.log(
+                {
+                    "conf": wandb.plot.confusion_matrix(
+                        probs=logits.cpu().numpy(), y_true=labels.cpu().numpy()
+                    )
+                }
+            )
+
+        # Clear outputs for next epoch
+        if hasattr(self, 'validation_step_outputs'):
+            self.validation_step_outputs.clear()
 
         # 2. Confusion Matrix plotting using scikit-learn method
         # wandb.log({"cm": wandb.sklearn.plot_confusion_matrix(labels.numpy(), preds)})
